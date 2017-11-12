@@ -78,10 +78,15 @@ func main() {
 		}
 	}
 
+	// Indicates that this address should be marked as pending and request a confirmation for the user
+	// to be added to the list, if you want to direct add to the list without confirmation set to true.
+	directSubscribe := false; 
+	
 	// Subscribe the email
 	memberResponse, err = client.Subscribe(
 		"listID",
 		"john@reese.com",
+		directSubscribe,
 		map[string]interface{}{},
 	)
 

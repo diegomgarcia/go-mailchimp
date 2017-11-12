@@ -5,15 +5,22 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"github.com/RichardKnop/go-mailchimp/status"
+	"github.com/diegomgarcia/go-mailchimp/status"
 )
 
 // Subscribe ...
-func (c *Client) Subscribe(listID string, email string, mergeFields map[string]interface{}) (*MemberResponse, error) {
+func (c *Client) Subscribe(listID string, email string, directSubscribe bool, mergeFields map[string]interface{}) (*MemberResponse, error) {
+
+	subscribeStatus := status.Pending
+
+	if directSubscribe {
+		subscribeStatus := status.Subscribed
+	}
+
 	// Make request
 	params := map[string]interface{}{
 		"email_address": email,
-		"status":        status.Pending,
+		"status":        subscribeStatus,
 		"merge_fields":  mergeFields,
 	}
 	resp, err := c.do(
