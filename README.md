@@ -19,7 +19,7 @@ package main
 import (
 	"log"
 
-	"github.com/RichardKnop/go-mailchimp"
+	"github.com/diegomgarcia/go-mailchimp"
 )
 
 func main() {
