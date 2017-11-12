@@ -14,7 +14,7 @@ func (c *Client) Subscribe(listID string, email string, directSubscribe bool, me
 	subscribeStatus := status.Pending
 
 	if directSubscribe {
-		subscribeStatus := status.Subscribed
+		subscribeStatus = status.Subscribed
 	}
 
 	// Make request
